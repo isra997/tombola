@@ -93,10 +93,10 @@
               "src/styles.css"
             ],
             "scripts": [
-              "./assets/js/init.js",
-              "./assets/js/prism.js",
-              "./assets/js/vendor/jquery.min.js",
-              "./assets/js/raffledrumanimation/js/raffle.js"
+              "src/assets/js/init.js",
+              "src/assets/js/prism.js",
+              "src/assets/js/vendor/jquery.min.js",
+              "src/assets/js/raffledrumanimation/js/raffle.js"
             ]
           }
         }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tombola',
@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
   templateUrl: './tombola.component.html',
   styleUrl: './tombola.component.css'
 })
-export class TombolaComponent {
+export class TombolaComponent implements OnInit{
+  ngOnInit(): void {
+  }
 
 }
