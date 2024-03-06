@@ -1,22 +1,16 @@
-
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TombolaService } from '../../tombola.service';
 
-
 @Component({
-  selector: 'app-rifa-tombola',
-  templateUrl: './rifa-tombola.component.html',
-  styleUrl: './rifa-tombola.component.css',
-  // imports: [ScreenSorteoComponent]
+  selector: 'app-screen-sorteo',
+  templateUrl: './screen-sorteo.component.html',
+  styles: ``
 })
-
-export class RifaTombolaComponent implements OnInit, OnDestroy{
+export class ScreenSorteoComponent implements OnInit, OnDestroy{
 
   constructor(private tombolaService:TombolaService){}
   ngOnInit(): void {
-    this.title = this.tombolaService.title;
-    this.anulados = this.tombolaService.anulados;
-    this.ganadores = this.tombolaService.ganador;
+    throw new Error('Method not implemented.');
   }
 
   uploadedData: any[] = [];
@@ -25,9 +19,6 @@ export class RifaTombolaComponent implements OnInit, OnDestroy{
   winnerIndex: number = 0;
   interval: any;
   selectedWinner:boolean=false;
-  anulados: number = 0;
-  ganadores: number = 0;
-  title:string = '';
 
   getData() {
     this.selectedWinner = false; // Mostrar el segundo div cuando se han mostrado todos los ganadores
@@ -75,4 +66,3 @@ export class RifaTombolaComponent implements OnInit, OnDestroy{
 
 
 }
-

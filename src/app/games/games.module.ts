@@ -9,6 +9,7 @@ import { RifaTombolaComponent } from './tombola/rifa-tombola/rifa-tombola.compon
 import { FormsModule } from '@angular/forms';
 import { ResultComponent } from './tombola/result/result.component';
 import { FormatWinnerPipe } from './pipes/format-winner.pipe';
+import { ScreenSorteoComponent } from './tombola/screen-sorteo/screen-sorteo.component';
 
 
 
@@ -19,6 +20,7 @@ import { FormatWinnerPipe } from './pipes/format-winner.pipe';
     RifaTombolaComponent,
     ResultComponent,
     FormatWinnerPipe,
+    ScreenSorteoComponent
   ],
   imports: [
     CommonModule,

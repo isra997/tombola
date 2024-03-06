@@ -5,8 +5,13 @@ import * as XLSX from 'xlsx';
   providedIn: 'root',
 })
 export class TombolaService {
+  
 
   uploadedData: any[]=[];
+  title: string='';
+  anulados: number=0;
+  ganador: number=0;
+
 
 
   logUploadedData() {

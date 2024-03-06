@@ -17,7 +17,7 @@
               </div>
               <div class="form-group">
                 <label for="suplentes"># ANULADOS</label>
-                <input type="number" class="form-control" id="suplentes" name="suplentes" min="0" max="15" placeholder="Ingrese la cantidad de suplentes" [(ngModel)]="suplentes">
+                <input type="number" class="form-control" id="suplentes" name="suplentes" min="0" max="15" placeholder="Ingrese la cantidad de suplentes" [(ngModel)]="anulados">
               </div>
               <div class="input-group">
   
@@ -27,7 +27,7 @@
               
               </div>
               <div class="text-center mt-4">
-                <button type="button" class="btn btn-primary" (click)="guardarDatos()" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-primary" (click)="guardarDatos()" >
                   Empezar
                 </button>
                 

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutpageComponent } from './tombola/layoutpage/layoutpage.component';
 import { ListTombolaComponent } from './tombola/list-tombola/list-tombola.component';
 import { RifaTombolaComponent } from './tombola/rifa-tombola/rifa-tombola.component';
+import { TombolaComponent } from '../tombola/tombola.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   children:[
     {path:'config',component:ListTombolaComponent},
     {path:'rifa',component:RifaTombolaComponent},
+    // {path:'tombola', component: TombolaComponent},
     {path:'**',redirectTo:'config'},
   ]
 }

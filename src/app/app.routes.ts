@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { TombolaComponent } from './tombola/tombola.component';
 
 export const routes: Routes = [
     {
