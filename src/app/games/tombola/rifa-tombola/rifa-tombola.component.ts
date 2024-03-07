@@ -1,6 +1,7 @@
 
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TombolaService } from '../../tombola.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,11 +13,17 @@ import { TombolaService } from '../../tombola.service';
 
 export class RifaTombolaComponent implements OnInit, OnDestroy{
 
-  constructor(private tombolaService:TombolaService){}
+  constructor(
+    private tombolaService:TombolaService,
+    private router:Router){}
   ngOnInit(): void {
     this.title = this.tombolaService.title;
     this.anulados = this.tombolaService.anulados;
     this.ganadores = this.tombolaService.ganador;
+    this.anuladosAux = this.anulados;
+    if (!this.title || !this.ganadores || this.tombolaService.uploadedData.length == 0) {
+      this.router.navigate(['games/config']);
+    }
   }
 
   uploadedData: any[] = [];
@@ -25,7 +32,12 @@ export class RifaTombolaComponent implements OnInit, OnDestroy{
   winnerIndex: number = 0;
   interval: any;
   selectedWinner:boolean=false;
+  isWinner:boolean=false;
+  isFinish:boolean=false;
+  sorteoCounter: number = 0;
+
   anulados: number = 0;
+  anuladosAux:number=0;
   ganadores: number = 0;
   title:string = '';
 
@@ -38,7 +50,7 @@ export class RifaTombolaComponent implements OnInit, OnDestroy{
     // Verificar si hay datos cargados
     if (this.uploadedData.length > 0) {
       // Realizar 50 iteraciones aleatorias
-      for (let i = 0; i < 20; i++) {
+      for (let i = 0; i < 100; i++) {
         this.shuffle(); // Mezclar los elementos aleatoriamente en cada iteración
         // Almacenar el ganador actual en el arreglo de ganadores
         const randomIndex = Math.floor(Math.random() * this.uploadedData.length);
@@ -58,6 +70,16 @@ export class RifaTombolaComponent implements OnInit, OnDestroy{
     } else {
       console.log("No hay datos cargados.");
     }
+
+
+
+    
+    
+    if(this.anulados==0 ){
+      this.isWinner=true;
+
+    }
+
   }
 
   ngOnDestroy() {
@@ -72,7 +94,43 @@ export class RifaTombolaComponent implements OnInit, OnDestroy{
     }
   }
 
+  giveAway() {
+    // Disminuir el número de anulados
+    if (this.anulados > 0) {
+      this.anulados--;
+    } else {
+      // Si no hay más anulados, disminuir el número de ganadores
+      if (this.ganadores > 0) {
+        this.ganadores--;
+  
+        // Si todavía hay ganadores, restablecer el número de anulados para el próximo ciclo
+        if (this.ganadores > 0) {
+          this.anulados = this.tombolaService.anulados;
+        } else {
+          // Si no quedan ganadores, aumentar el contador de sorteos
+          this.sorteoCounter++;
+        }
+      }
+    }
+  
+    console.log(`Disminuyendo ganadores a ${this.ganadores}`);
+  
+    // Verificar si se han agotado todos los ganadores y anulados, y si se han realizado tres sorteos
+    if (this.ganadores <= 0 && this.anulados <= 0) {
+      this.isFinish = true;
+    }
+  
+    // Restablecer la bandera isWinner si estaba establecida
+    if (this.isWinner) {
+      this.isWinner = false;
+    }
+  }
+  
+  
 
+  reset(){
+    this.router.navigate(['games/config']);
+  }
 
 }
 

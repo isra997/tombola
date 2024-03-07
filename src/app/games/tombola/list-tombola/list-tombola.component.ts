@@ -21,14 +21,11 @@ export class ListTombolaComponent {
 
   guardarDatos() {
 
-    if (this.title && this.ganadores && this.anulados && this.tombolaService.uploadedData.length > 0) {
+    if (this.title && this.ganadores  && this.tombolaService.uploadedData.length > 0) {
       this.tombolaService.title = this.title;
       this.tombolaService.ganador = this.ganadores;
       this.tombolaService.anulados = this.anulados;
       this.router.navigate(['games/rifa']);
-      console.log('title', this.tombolaService.title);
-      console.log('ganador', this.tombolaService.ganador);
-      console.log('anulados', this.tombolaService.anulados);
     }else {
         this.errorMessage = 'Por favor, complete todos los campos antes de continuar.';
       }
